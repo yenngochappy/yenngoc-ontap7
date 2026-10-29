@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Phiếu ôn tập tương tác KHTN 7 – Có chấm điểm</title>
+<style>
+:root{--ink:#21304a;--muted:#66758b;--blue:#3478f6;--bluebg:#eaf2ff;--purple:#7957d5;--purplebg:#f1edff;--green:#198754;--greenbg:#e8f8ef;--line:#dfe7f2;--bg:#f4f7fc}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top left,#e7f0ff,transparent 32%),var(--bg);font-family:Arial,"Segoe UI",sans-serif;color:var(--ink);line-height:1.55}button,input,select{font:inherit}button{cursor:pointer}
+.hero{background:linear-gradient(125deg,#2358c8,#7255d6);color:#fff;padding:30px 18px}.heroIn{max-width:1100px;margin:auto;display:flex;gap:18px;align-items:center}.heroIcon{width:76px;height:76px;display:grid;place-items:center;border-radius:22px;background:#ffffff25;font-size:40px;flex:none}.hero h1{font-size:clamp(24px,4vw,36px);line-height:1.2;margin:0 0 7px}.hero p{margin:0;color:#eef2ff}
+.wrap{max-width:1100px;margin:22px auto 45px;padding:0 15px}.panel,.question,.result{background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 5px 18px #20304a09}.panel{padding:16px;display:grid;grid-template-columns:1fr 240px;gap:16px;align-items:center}.name{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;margin-top:5px}.progressText{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px}.bar{height:9px;background:#edf1f7;border-radius:20px;overflow:hidden}.bar div{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--purple))}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:17px 0}.tab{border:1px solid var(--line);border-radius:14px;background:#fff;padding:13px;text-align:left;color:var(--ink)}.tab strong{display:block;font-size:14px}.tab span{font-size:12px;color:var(--muted)}.tab.active{background:var(--bluebg);border-color:#8eb2ff}.section{display:none}.section.active{display:block}.head{border-radius:16px;padding:18px 21px;background:linear-gradient(120deg,#2f72e9,#4f8ef7);color:#fff;margin-bottom:12px}.head.purple{background:linear-gradient(120deg,#6845c8,#9a7bea)}.head.green{background:linear-gradient(120deg,#138453,#3eae7b)}.head h2{margin:0 0 4px;font-size:clamp(20px,3vw,27px)}.head p{margin:0;color:#ffffffed}
+.question{padding:17px;margin:12px 0;scroll-margin-top:12px}.qtop{display:flex;gap:10px;align-items:flex-start;margin-bottom:10px}.qnum{white-space:nowrap;background:var(--bluebg);color:#245fc8;border-radius:9px;padding:5px 9px;font-weight:bold}.qtext{font-weight:600;margin:3px 0 0}.options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:11px}.option{display:flex;align-items:flex-start;gap:9px;padding:11px;border:1px solid var(--line);border-radius:11px;background:#fff;min-width:0}.option:hover{border-color:#8eb2ff;background:#f8fbff}.option:has(input:checked){background:var(--bluebg);border-color:var(--blue)}input[type=radio]{accent-color:var(--blue);margin-top:5px;flex:none}.letter{font-weight:bold;color:#42618d;min-width:20px}.figure{display:flex;justify-content:center;align-items:center;margin:12px auto}.atom{width:65px;height:65px;border-radius:50%;display:grid;place-items:center;color:white;font-weight:bold;font-size:23px;box-shadow:inset -7px -7px 10px #0002}.atom.o{background:#e94d5b;margin:0 -6px;width:57px;height:57px}.atom.c{background:#30343b}.naTile{background:#d9f1fa;border:2px solid #9ab8c9;text-align:center;padding:5px 15px;color:#183c58;line-height:1.25}.naTile b{display:block;font-size:28px}.methane{display:flex;gap:8px;align-items:center;justify-content:center;margin:12px}.sphere{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#e8edf4;border:1px solid #bbc5d2}.sphere.c{width:49px;height:49px;background:#343840;color:#fff;border:0}
+.statement{padding:12px;border:1px solid var(--line);border-radius:11px;margin-top:9px;background:#fcfdff}.tfChoices{display:flex;gap:9px;margin-top:9px}.tfChoices label{display:flex;align-items:center;gap:7px;flex:1;border:1px solid var(--line);border-radius:9px;padding:8px 11px;background:#fff}.tfChoices label:has(input:checked){background:var(--purplebg);border-color:#9a83e6}.tfChoices input{accent-color:var(--purple)}
+.matchTable{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}.matchTable th{text-align:left;background:var(--greenbg);padding:11px}.matchTable td{padding:12px;border-top:1px solid var(--line);vertical-align:top}.matchTable th+th,.matchTable td+td{border-left:1px solid var(--line)}.matchTable select{width:100%;padding:9px;border:1px solid #cfd9e7;border-radius:9px;background:white;color:var(--ink)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:19px 0}.btn{border:0;border-radius:11px;padding:11px 16px;font-weight:700}.primary{background:var(--blue);color:white}.greenBtn{background:var(--green);color:white}.secondary{background:white;border:1px solid var(--line);color:var(--ink)}.result{display:none;padding:18px;margin-top:12px}.result.show{display:block}.result h3{margin:0 0 8px}.score{font-size:32px;font-weight:800;color:var(--blue)}.resultGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.stat{padding:12px;border-radius:11px;background:#f6f8fc}.stat b{display:block;font-size:19px}.feedback{margin-top:12px;padding:12px;border-radius:10px;background:#f6f8fc}.correct{border-color:#6ac497!important;background:#edfbf3!important}.wrong{border-color:#f0a0a0!important;background:#fff1f1!important}.explain{font-size:13px;color:var(--muted);margin-top:7px}.footer{text-align:center;font-size:12px;color:var(--muted);padding:20px}
+@media(max-width:700px){.heroIn{align-items:flex-start}.heroIcon{width:58px;height:58px;font-size:30px}.panel{grid-template-columns:1fr}.tabs{grid-template-columns:1fr}.options{grid-template-columns:1fr}.question{padding:13px}.matchTable,.matchTable tbody,.matchTable tr,.matchTable td{display:block;width:100%}.matchTable thead{display:none}.matchTable tr{border-top:1px solid var(--line);padding:7px 0}.matchTable tr:first-child{border-top:0}.matchTable td{border:0!important;padding:7px 11px}.matchTable td:nth-child(2):before{content:"Chọn đáp án ghép: ";font-weight:bold;display:block;margin-bottom:4px}.resultGrid{grid-template-columns:1fr}}
+@media print{body{background:white}.hero{background:white;color:#111;padding:10px 0}.hero p{color:#333}.heroIcon,.panel,.tabs,.actions,.footer{display:none!important}.wrap{margin:0;padding:0}.section{display:block!important;break-before:page}.head{background:#eee!important;color:#111}.head p{color:#333}.question{box-shadow:none;break-inside:avoid}.result{display:none!important}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="heroIn"><div class="heroIcon">⚛️</div><div><h1>ÔN TẬP KIỂM TRA GIỮA KÌ I</h1><p>KHOA HỌC TỰ NHIÊN 7 · NĂM HỌC 2026–2027</p><p style="margin-top:7px;font-size:14px">Phiếu học tập tương tác · Tự chấm điểm · Xáo trộn câu hỏi và phương án mỗi lượt chơi</p></div></div></header>
+<main class="wrap">
+<div class="panel"><div><label for="studentName"><b>Họ và tên học sinh (không bắt buộc)</b></label><input id="studentName" class="name" placeholder="Nhập họ và tên..."></div><div><div class="progressText"><span>Tiến độ trả lời</span><b id="progressText">0/52 mục</b></div><div class="bar"><div id="progressBar"></div></div><div style="font-size:12px;color:var(--muted);margin-top:5px">31 trắc nghiệm · 16 nhận định · 5 ghép cột</div></div></div>
+<nav class="tabs"><button class="tab active" data-target="part1"><strong>🔵 PHẦN 1. TRẮC NGHIỆM</strong><span>Câu 1–31 · Chọn một đáp án</span></button><button class="tab" data-target="part2"><strong>🟣 PHẦN 2. ĐÚNG – SAI</strong><span>Câu 32–39 · Chọn Đúng hoặc Sai</span></button><button class="tab" data-target="part3"><strong>🟢 PHẦN 3. GHÉP CỘT</strong><span>5 mục nối cột A–B</span></button></nav>
+<section class="section active" id="part1"><div class="head"><h2>PHẦN 1. TRẮC NGHIỆM NHIỀU LỰA CHỌN</h2><p>Thứ tự câu hỏi và phương án được xáo trộn mỗi lượt. Số câu gốc luôn được giữ để đối chiếu.</p></div><div id="mcqList"></div></section>
+<section class="section" id="part2"><div class="head purple"><h2>PHẦN 2. CÂU HỎI ĐÚNG SAI</h2><p>Thứ tự câu và thứ tự hiển thị Đúng/Sai có thể thay đổi; hệ thống chấm theo giá trị đáp án, không theo vị trí nút.</p></div><div id="tfList"></div></section>
+<section class="section" id="part3"><div class="head green"><h2>PHẦN 3. CÂU HỎI GHÉP CỘT</h2><p>Cột B được xáo trộn mỗi lượt; nội dung ghép đúng luôn được giữ cố định trong dữ liệu chấm.</p></div><div class="question"><table class="matchTable"><thead><tr><th style="width:48%">Cột A (Khái niệm / Đặc điểm)</th><th style="width:20%">Nối cột A-B</th><th>Cột B (Đáp án)</th></tr></thead><tbody id="matchRows"></tbody></table></div></section>
+<div class="actions"><button class="btn primary" id="submitBtn">Nộp bài & chấm điểm</button><button class="btn greenBtn" id="replayBtn">🔀 Chơi lại – xáo trộn</button><button class="btn secondary" id="printBtn">In phiếu</button></div>
+<div class="result" id="resultBox" aria-live="polite"><h3>🏆 Kết quả lượt làm</h3><div class="score" id="score"></div><div id="scoreSummary"></div><div class="resultGrid" id="resultGrid"></div><div class="feedback" id="feedback"></div><p class="explain">Đáp án được chấm theo khóa cố định từ phần đáp án đánh dấu trong file giáo viên gửi. Khi chơi lại, chỉ thứ tự hiển thị thay đổi; câu hỏi và đáp án đúng không bị ghép nhầm.</p></div>
+<div class="footer">Phiếu tương tác KHTN 7 · Lưu file HTML về máy để sử dụng ngoại tuyến.</div>
+</main>
+<script>
+const mcqs=[
+{n:1,q:"Hạt mang điện trong hạt nhân nguyên tử là?",o:[["a","proton."],["b","electron."],["c","neutron."],["d","neutron và electron."]],a:"a"},
+{n:2,q:"Nguyên tử có cấu tạo như thế nào?",o:[["a","Nguyên tử có cấu tạo gồm hạt nhân và neutron."],["b","Nguyên tử có cấu tạo bởi các electron mang điện tích âm."],["c","Nguyên tử có cấu tạo gồm hạt nhân ở bên trong và vỏ tạo bởi một hay nhiều electron mang điện tích âm."],["d","Nguyên tử có cấu tạo bởi hạt proton và neutron."]],a:"c"},
+{n:3,q:"Nguyên tử argon có khối lượng nguyên tử là 40 amu, số proton là 18, số electron là 18. Số neutron trong nguyên tử argon là",o:[["a","36."],["b","18."],["c","22."],["d","32"]],a:"c"},
+{n:4,q:"Nguyên tử X có 26 proton trong hạt nhân. Cho các phát biểu sau về X: (1) X có 26 neutron trong hạt nhân. (2) X có 26 electron ở vỏ nguyên tử. (3) X có điện tích hạt nhân là 26+. (4) Khối lượng nguyên tử X là 26 amu. Trong các phát biểu trên, số phát biểu đúng là:",o:[["a","1"],["b","2"],["c","3"],["d","4"]],a:"b"},
+{n:5,q:"Số electron có trong nguyên tử chlorine có số đơn vị điện tích hạt nhân 17 là:",o:[["a","16"],["b","18"],["c","35"],["d","17"]],a:"d"},
+{n:6,q:"Các hạt cấu tạo nên hầu hết các nguyên tử là:",o:[["a","Electron, proton và neutron."],["b","Electron và neutron."],["c","Proton và neutron."],["d","Electron và proton."]],a:"a"},
+{n:7,q:"Hạt không mang điện trong hạt nhân nguyên tử là hạt",o:[["a","proton."],["b","electron."],["c","neutron."],["d","neutron và electron."]],a:"c"},
+{n:8,q:"Nguyên tố hóa học là tập hợp nguyên tử cùng loại có cùng",o:[["a","số neutron trong hạt nhân"],["b","số proton trong hạt nhân."],["c","số electron trong hạt nhân"],["d","số proton và số neutron trong hạt nhân"]],a:"b"},
+{n:9,q:"Kí hiệu hóa học của nguyên tố iron là",o:[["a","fE."],["b","FE."],["c","Fe."],["d","fe."]],a:"c"},
+{n:10,q:"Kí hiệu hóa học của nguyên tố sodium là",o:[["a","nA."],["b","na."],["c","NA."],["d","Na."]],a:"d"},
+{n:11,q:"Nguyên tố hóa học nào giúp ngăn ngừa bệnh bướu cổ ở người?",o:[["a","Iodine."],["b","Calcium."],["c","Iron."],["d","Potassium."]],a:"a"},
+{n:12,q:"Nguyên tố hóa học có kí hiệu Al là",o:[["a","Potssium."],["b","Aluminium."],["c","Sodium."],["d","Neon."]],a:"b"},
+{n:13,q:"Nguyên tố hóa học có kí hiệu P là",o:[["a","Zinc."],["b","chlorine."],["c","phosphorus."],["d","silver."]],a:"c"},
+{n:14,q:"Nguyên tố hóa học phổ biến nhất trong vũ trụ là",o:[["a","nitrogen."],["b","helium."],["c","hydrogen."],["d","carbon."]],a:"c"},
+{n:15,q:"Nguyên tố hóa học nào chiếm hàm lượng cao nhất trong trong vỏ Trái Đất?",o:[["a","Oxygen."],["b","Nitrogen."],["c","Silicon."],["d","Iron."]],a:"a"},
+{n:16,q:"Số hiệu nguyên tử của sodium là 11, số hạt proton trong nguyên tử sodium là",o:[["a","10"],["b","11"],["c","12"],["d","13"]],a:"b"},
+{n:17,q:"Trong các câu sau đây câu nào KHÔNG đúng?",o:[["a","Các nguyên tử thuộc cùng một nguyên tố hóa học có số neutron bằng nhau."],["b","Hạt proton đặc trưng cho một nguyên tố hóa học."],["c","Mỗi nguyên tố hóa học có một kí hiêụ hóa học riêng."],["d","Kí hiệu hóa học được biểu diễn một hay hai chữ cái (chữ cái đầu tiên viết in hoa và nếu có chữ thứ hai viết thường)."]],a:"a"},
+{n:18,q:"Phát biểu nào sau đây sai?",o:[["a","Nguyên tố hóa học là tập hợp những nguyên tử có cùng số proton trong hạt nhân."],["b","Nguyên tố hóa học được đặc trưng bởi các neutron có trong hạt nhân nguyên tử."],["c","Các nguyên tử của cùng nguyên tố hóa học có tính chất hóa học giống nhau."],["d","Nguyên tố hóa học nhân tạo là những nguyên tố hóa học do con người tổng hợp ra."]],a:"b"},
+{n:19,q:"Bảng tuần hoàn các nguyên tố hóa học được sắp xếp theo:",o:[["a","chiều tăng dần điện tích hạt nhân của nguyên tử."],["b","tính kim loại tăng dần."],["c","nguyên tử khối tăng dần."],["d","tính phi kim tăng dần."]],a:"a"},
+{n:20,q:"Số thứ tự chu kì trong bảng hệ thống tuần hoàn cho biết",o:[["a","số hiệu nguyên tử."],["b","số electron lớp ngoài cùng."],["c","số thứ tự nguyên tố."],["d","số lớp electron."]],a:"d"},
+{n:21,q:"Số thứ tự nhóm A trong bảng hệ thống tuần hoàn cho biết",o:[["a","số electron lớp ngoài cùng."],["b","số lớp electron."],["c","số hiệu nguyên tử."],["d","số thứ tự nguyên tố."]],a:"a"},
+{n:22,q:"Nhóm nguyên tố kim loại thuộc nhóm IIA còn có tên gọi khác là gì?",o:[["a","Khí hiếm"],["b","Kim loại kiềm thổ"],["c","Kim loại kiềm"],["d","Phi kim"]],a:"b"},
+{n:23,q:"Nhóm nguyên tố kim loại thuộc nhóm IA còn có tên gọi khác là gì?",o:[["a","Khí hiếm"],["b","Kim loại kiềm thổ"],["c","Kim loại kiềm"],["d","Phi kim"]],a:"c"},
+{n:24,q:"Các nguyên tố xếp ở chu kỳ 5 có số lớp electron trong nguyên tử là",o:[["a","4"],["b","5"],["c","3"],["d","6"]],a:"b"},
+{n:25,q:"Vị trí của nguyên tử nguyên tố X có số hiệu nguyên tử bằng 27 trong bảng tuần hoàn thuộc:",o:[["a","Ô thứ 23."],["b","Ô thứ 24"],["c","Ô thứ 26"],["d","Ô thứ 27"]],a:"d"},
+{n:26,q:"Hợp chất là chất",o:[["a","chất được tạo từ 2 nguyên tố hoá học."],["b","chất được tạo nên từ hai hay nhiều nguyên tố hoá học."],["c","chất được tạo từ 2 nguyên tố kim loại trở lên."],["d","chất được tạo từ các nguyên tố kim loại và nguyên tố phi kim."]],a:"b"},
+{n:27,q:"Đơn chất là những chất tạo nên bao nhiêu nguyên tố hoá học",o:[["a","từ một nguyên tố."],["b","từ hai nguyên tố trở lên."],["c","từ ba nguyên tố."],["d","từ bốn nguyên tố."]],a:"a"},
+{n:28,q:"Cho mô hình phân tử carbon dioxide. Phát biểu nào sau đây không đúng?",o:[["a","Carbon dioxide là hợp chất."],["b","Phân tử carbon dioxide gồm 1 nguyên tử carbon và 2 nguyên tử oxygen."],["c","Khối lượng phân tử carbon dioxide là 44 amu."],["d","Phân tử carbon dioxide được tạo thành từ 3 nguyên tố hoá học."]],a:"d",fig:"co2"},
+{n:29,q:"Cho các chất sau CO, CaO, O₃, NO₂, CH₄, C, Fe. Có bao nhiêu chất là đơn chất?",o:[["a","3."],["b","5."],["c","6."],["d","7."]],a:"a"},
+{n:30,q:"Cho các chất sau NH₃, H₂O, S, NaCl, Ne, Ba, MgO, CaCl₂. Có bao nhiêu chất là hợp chất?",o:[["a","4."],["b","5."],["c","6."],["d","8."]],a:"b"},
+{n:31,q:"Chất nào sau đây là đơn chất?",o:[["a","HCl"],["b","NH₃"],["c","CuSO₄"],["d","O₂"]],a:"d"}
+];
+const tf=[
+{n:32,lead:"Trong ô nguyên tố sau cho biết điều gì?",fig:"na",items:[["a","Số thứ tự của nguyên tố trong bảng tuần hoàn là 11",true],["b","Tên của nguyên tố là Na",false],["c","Khối lượng nguyên tử của nguyên tố là 23",true],["d","Tên của nguyên tố là sodium",true]]},
+{n:33,lead:"Cho mô hình phân tử methane",fig:"methane",items:[["a","Phân tử methane là đơn chất",false],["b","Phân tử methane được cấu tạo gồm 1 nguyên tử C và 3 nguyên tử H",false],["c","Phân tử methane có công thức hóa học là CH₄",true],["d","Hóa trị của carbon (C) trong phân tử là hóa trị IV",true]]},
+{n:34,items:[["a","Nguyên tố Iodine (i-ốt) là nguyên tố vi lượng cần thiết giúp phòng ngừa bệnh bướu cổ ở người.",true]]},
+{n:35,items:[["a","Bảng tuần hoàn các nguyên tố hóa học gồm 7 chu kì, trong đó có 4 chu kì nhỏ (1, 2, 3, 4) và 3 chu kì lớn (5, 6, 7).",false]]},
+{n:36,items:[["a","Thủy ngân (Mercury) là kim loại duy nhất ở thể lỏng trong điều kiện thường, được ứng dụng để chế tạo nhiệt kế.",true]]},
+{n:37,items:[["a","Đơn chất là những chất mà trong công thức hóa học có từ 2 ký hiệu nguyên tố hóa học trở lên (2 chữ cái viết hoa trở lên).",false]]},
+{n:38,items:[["a","Khí hiếm Helium (He) có 8 electron ở lớp ngoài cùng nên có cấu trúc vỏ electron bền vững.",false]]},
+{n:39,items:[["a","Các chất tạo bởi liên kết ion thường ở thể rắn, khó bay hơi, khó nóng chảy và tan trong nước tạo dung dịch dẫn điện.",true]]}
+];
+const matches=[
+{n:1,text:"Hạt mang điện tích dương nằm trong hạt nhân nguyên tử.",a:"C"},
+{n:2,text:"Hạt không mang điện nằm trong hạt nhân nguyên tử.",a:"E"},
+{n:3,text:"Hạt mang điện tích âm chuyển động ở vỏ nguyên tử.",a:"A"},
+{n:4,text:"Liên kết hóa học được hình thành do lực hút giữa ion dương và ion âm.",a:"B"},
+{n:5,text:"Nhóm các nguyên tố kim loại kiềm trong bảng tuần hoàn.",a:"D"}
+];
+const matchOptions=[["A","Electron (e)"],["B","Liên kết ion"],["C","Proton (p)"],["D","Nhóm IA"],["E","Neutron (N)"]];
+const letters=["A","B","C","D"];
+let currentMCQ=[],currentTF=[],currentMatches=[],submitted=false;
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function renderMCQ(){
+ currentMCQ=shuffle(mcqs).map(q=>({...q,shown:shuffle(q.o)}));
+ document.getElementById("mcqList").innerHTML=currentMCQ.map(q=>{
+  let fig=q.fig==="co2"?'<div class="figure" aria-label="Mô hình phân tử carbon dioxide"><span class="atom o">O</span><span class="atom c">C</span><span class="atom o">O</span></div>':"";
+  return `<article class="question" id="mcq-${q.n}"><div class="qtop"><span class="qnum">Câu ${q.n}</span><div class="qtext">${q.q}</div></div>${fig}<div class="options">${q.shown.map((op,i)=>`<label class="option" data-opt="${op[0]}"><input type="radio" name="mcq${q.n}" value="${op[0]}"><span class="letter">${letters[i]}.</span><span>${op[1]}</span></label>`).join("")}</div></article>`;
+ }).join("");
+}
+function renderTF(){
+ currentTF=shuffle(tf);
+ document.getElementById("tfList").innerHTML=currentTF.map(q=>{
+  let fig=q.fig==="na"?'<div class="figure"><div class="naTile"><small>11</small><b>Na</b><small>Sodium</small><div>23</div></div></div>':q.fig==="methane"?'<div class="methane" aria-label="Mô hình phân tử methane"><span class="sphere">H</span><span class="sphere">H</span><span class="sphere c">C</span><span class="sphere">H</span><span class="sphere">H</span></div>':"";
+  return `<article class="question" id="tf-${q.n}"><div class="qtop"><span class="qnum">Câu ${q.n}</span><div class="qtext">${q.lead||""}</div></div>${fig}${q.items.map(([id,text,answer])=>`<div class="statement" data-tf="${q.n}-${id}"><div>${q.items.length>1?id+". ":""}${text}</div><div class="tfChoices">${shuffle(["true","false"]).map(v=>`<label><input type="radio" name="tf${q.n}_${id}" value="${v}"><span>${v==="true"?"Đúng":"Sai"}</span></label>`).join("")}</div></div>`).join("")}</article>`;
+ }).join("");
+}
+function renderMatches(){
+ currentMatches=shuffle(matches);
+ const shuffledOptions=shuffle(matchOptions);
+ document.getElementById("matchRows").innerHTML=currentMatches.map(m=>`<tr data-match="${m.n}"><td>${m.n}. ${m.text}</td><td><select name="match${m.n}" aria-label="Đáp án ghép mục ${m.n}"><option value="">— Chọn —</option>${shuffledOptions.map(o=>`<option value="${o[0]}">${o[0]}</option>`).join("")}</select></td><td>${shuffledOptions.map(o=>`${o[0]}. ${o[1]}`).join("<br>")}</td></tr>`).join("");
+}
+function answeredCount(){let n=0;mcqs.forEach(q=>{if(document.querySelector(`input[name="mcq${q.n}"]:checked`))n++});tf.forEach(q=>q.items.forEach(([id])=>{if(document.querySelector(`input[name="tf${q.n}_${id}"]:checked`))n++}));matches.forEach(m=>{if(document.querySelector(`select[name="match${m.n}"]`).value)n++});return n}
+function updateProgress(){const total=52,done=answeredCount();document.getElementById("progressText").textContent=`${done}/${total} mục`;document.getElementById("progressBar").style.width=(done/total*100)+"%"}
+document.addEventListener("change",e=>{if(e.target.matches("input,select")){if(!submitted)updateProgress()}});
+document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x===b));document.querySelectorAll(".section").forEach(s=>s.classList.toggle("active",s.id===b.dataset.target))}));
+function grade(){
+ let mcqCorrect=0,mcqAnswered=0,tfCorrect=0,tfAnswered=0,matchCorrect=0,matchAnswered=0,details=[];
+ mcqs.forEach(q=>{const el=document.querySelector(`input[name="mcq${q.n}"]:checked`);const got=el?.value;if(got)mcqAnswered++;const ok=got===q.a;if(ok)mcqCorrect++;details.push({type:"mcq",n:q.n,got,ok,correct:q.a,text:q.q,correctText:q.o.find(x=>x[0]===q.a)[1]})});
+ tf.forEach(q=>q.items.forEach(([id,text,ans])=>{const el=document.querySelector(`input[name="tf${q.n}_${id}"]:checked`);const got=el?.value;if(got)tfAnswered++;const ok=got===(ans?"true":"false");if(ok)tfCorrect++;details.push({type:"tf",n:q.n,label:id,got,ok,correct:ans?"Đúng":"Sai",text})}));
+ matches.forEach(m=>{const got=document.querySelector(`select[name="match${m.n}"]`).value;if(got)matchAnswered++;const ok=got===m.a;if(ok)matchCorrect++;details.push({type:"match",n:m.n,got,ok,correct:m.a,text:m.text,correctText:matchOptions.find(o=>o[0]===m.a)[1]})});
+ const total=52,correct=mcqCorrect+tfCorrect+matchCorrect,answered=mcqAnswered+tfAnswered+matchAnswered;
+ const score10=(correct/total*10).toFixed(2);
+ document.getElementById("score").textContent=`${correct}/${total} điểm mục · ${score10}/10`;
+ const name=document.getElementById("studentName").value.trim();
+ document.getElementById("scoreSummary").textContent=`${name?name+" — ":""}Đã trả lời ${answered}/${total} mục. Điểm được tính đều theo từng mục; câu trắc nghiệm tính 1 mục, mỗi nhận định đúng/sai tính 1 mục, mỗi ghép cột tính 1 mục.`;
+ document.getElementById("resultGrid").innerHTML=`<div class="stat"><span>Trắc nghiệm</span><b>${mcqCorrect}/31</b><small>Đã trả lời ${mcqAnswered}/31</small></div><div class="stat"><span>Đúng – Sai</span><b>${tfCorrect}/16</b><small>Đã trả lời ${tfAnswered}/16</small></div><div class="stat"><span>Ghép cột</span><b>${matchCorrect}/5</b><small>Đã trả lời ${matchAnswered}/5</small></div>`;
+ const wrong=details.filter(d=>!d.ok);
+ document.getElementById("feedback").innerHTML=wrong.length?`<b>Những mục cần xem lại (${wrong.length})</b><ul>${wrong.slice(0,30).map(d=>`<li>${d.type==="tf"?"Câu "+d.n+" ý "+d.label:d.type==="match"?"Ghép cột mục "+d.n:"Câu "+d.n}: ${d.got===undefined?"Chưa trả lời":"Bạn chọn "+(d.type==="mcq"?letters[["a","b","c","d"].indexOf(d.got)]+". "+d.correctText:d.type==="tf"?d.got:d.got)}. Đáp án đúng: <b>${d.type==="mcq"?letters[["a","b","c","d"].indexOf(d.correct)]+". "+d.correctText:d.type==="tf"?d.correct:d.correct+" — "+d.correctText}</b></li>`).join("")}</ul>`:"<b>🎉 Xuất sắc! Tất cả các mục đều chính xác.</b>";
+ // Mark MCQ choices and true/false statements; answer correctness is based on stable option IDs.
+ mcqs.forEach(q=>{const chosen=document.querySelector(`input[name="mcq${q.n}"]:checked`);document.querySelectorAll(`input[name="mcq${q.n}"]`).forEach(inp=>{const lab=inp.closest("label");if(inp.value===q.a)lab.classList.add("correct");if(chosen&&inp===chosen&&inp.value!==q.a)lab.classList.add("wrong")})});
+ tf.forEach(q=>q.items.forEach(([id,text,ans])=>{const box=document.querySelector(`[data-tf="${q.n}-${id}"]`);box.classList.add((document.querySelector(`input[name="tf${q.n}_${id}"]:checked`)?.value===(ans?"true":"false"))?"correct":"wrong");const radios=box.querySelectorAll("input");radios.forEach(r=>{if(r.value===(ans?"true":"false"))r.closest("label").classList.add("correct");else if(r.checked)r.closest("label").classList.add("wrong")})}));
+ matches.forEach(m=>{const row=document.querySelector(`tr[data-match="${m.n}"]`);row.querySelector("select").classList.add(row.querySelector("select").value===m.a?"correct":"wrong")});
+ submitted=true;document.getElementById("resultBox").classList.add("show");document.getElementById("resultBox").scrollIntoView({behavior:"smooth",block:"start"});document.getElementById("submitBtn").disabled=true;document.getElementById("replayBtn").focus();
+}
+function clearAndRender(){
+ submitted=false;document.getElementById("resultBox").classList.remove("show");document.getElementById("submitBtn").disabled=false;
+ renderMCQ();renderTF();renderMatches();updateProgress();window.scrollTo({top:0,behavior:"smooth"});
+}
+document.getElementById("submitBtn").addEventListener("click",grade);
+document.getElementById("replayBtn").addEventListener("click",()=>{if(!confirm("Bắt đầu lượt mới? Các lựa chọn hiện tại sẽ bị xóa và câu hỏi/phương án sẽ được xáo trộn."))return;clearAndRender()});
+document.getElementById("printBtn").addEventListener("click",()=>window.print());
+renderMCQ();renderTF();renderMatches();updateProgress();
+</script>
+</body>
+</html>
